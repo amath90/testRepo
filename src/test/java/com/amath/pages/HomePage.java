@@ -1,17 +1,17 @@
 package com.amath.pages;
 
 import com.amath.helpers.CommonMethods;
-import com.sun.deploy.ref.Helpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class HomePage extends CommonMethods {
 
-    private WebDriver driver;
+    public WebDriver driver;
+//    CommonMethods cm = new CommonMethods(driver);  // wiem wiemże jestem upośledzony i czegoś tu brakuje
+    public CommonMethods cm;
 
-    private final CommonMethods cm = new CommonMethods(driver);
     private static String PAGE_URL="http://new.kolinskiego.pl/";
 
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div/div")
@@ -33,7 +33,8 @@ public class HomePage {
     private WebElement Grafik;
 
     public HomePage(WebDriver driver) {
-        this.driver=driver;
+        super(driver);
+//        this.driver=driver;
         driver.get(PAGE_URL);
         PageFactory.initElements(driver, this   );
     }
